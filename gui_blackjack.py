@@ -1,14 +1,4 @@
 
-#Presentation tier of the Blackjack game
-#Implement playerCanPlayTurn method and play, hit and stand event handlers
-
-#Assignment: Phase 3 project
-#Class: PROG 128
-#Date: (March 17 , 2023)
-#Author: Nam Nguyen
-#Description: Phase 3 part of the project. 
-
-
 import tkinter as tk
 from tkinter import ttk
 
@@ -129,35 +119,27 @@ class BlackjackFrame(ttk.Frame):
             .grid(column=1, row=0)
 
 
-    ''' Method to update the dealer hand and the dealer points in the GUI'''
+
     def displayDealer(self):
         if self.game.dealerHand != None:
             cards = self.game.dealerHand.shortDisplay()
             self.dealerCards.set(cards)
             self.dealerPoints.set(str(self.game.dealerHand.points()))         
 
-    ''' Method to update the player hand and the dealer points in the GUI'''
+
     def displayPlayer(self):
         if self.game.playerHand != None:
             cards = self.game.playerHand.shortDisplay()
             self.playerCards.set(cards)
             self.playerPoints.set(str(self.game.playerHand.points()))        
 
-    ''' Method to update the result of the game
-    Calls determineOutcome to decide what the outcome of the game is.
-    Updates the result and the money
-    '''
+
     def displayResult(self):
         result = self.game.determineOutcome()
         self.result.set(result)
         self.money.set("$"+str(self.game.money))
 
-    ''' Method confirms that the game is underway and sets result to blank,
-    and returns True indicating that player can play a turn (i.e. can
-    select hit or stand)
-    otherwise if game in not underway, updates result with correct
-    feedback, and returns False
-    '''
+
     def playerCanPlayTurn(self):
         if self.gameOver:
             self.result.set("No game underway.")
@@ -166,12 +148,6 @@ class BlackjackFrame(ttk.Frame):
             return True
 
 
-    ''' Method to implement user selecting to hit.
-    Method confirms that user can play a turn, if not returns
-    else calls the takePlayerTurn and reports the player state by calling displayPlayer.
-    Next checks if player is busted, if so ends the game and updates the result by
-    calling displayResult.
-    '''
     def hit(self):
         if not self.playerCanPlayTurn():
             return
@@ -182,12 +158,6 @@ class BlackjackFrame(ttk.Frame):
             self.displayDealer()
             self.displayResult()
 
-    ''' Method to implement user selecting to stand.
-    Method confirms that user can play a turn, if not returns
-    else ends the game and has the dealer play his turn and
-    reports the dealer state by calling displayDealer.
-    Finally updates the result by calling displayResult.        
-    '''
     def stand(self):
         if not self.playerCanPlayTurn():
             return
@@ -197,20 +167,7 @@ class BlackjackFrame(ttk.Frame):
         self.displayResult()
 
             
-    ''' Method to start a new game.
-    Method checks that the game is not already underway, if so does nothing and returns
-    Else
-        First reads the bet amount and verifies that it is valid (it is greater than
-            0 and less than the money available), if not valid, gives feedback by updating
-            the result textEntry and returns
-        Next starts the game by
-            - making sure gameOver is set to False
-            - setting the bet on the game
-            - calling setupRound
-            - displaying the player's cards and points
-            - displaying the dealer's card and points
-        Before returning checks if either player has a blackjack, if so ends the game 
-    '''
+
     def play(self):
         if not self.gameOver:
             return
