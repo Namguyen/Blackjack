@@ -1,17 +1,7 @@
 
-#Assignment: Phase 1 project
-#Class: PROG 128
-#Date: (March 4 , 2023)
-#Author: Nam Nguyen
-#Description: Phase 2 part of the project. 
-
-
 import random
 
 
-##########################################################################
-## Definitions for the classes: Card, Deck and Hand
-##########################################################################
 class Card:
     RANKORDER = {"2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "10": 10, "Jack": 11, "Queen": 12, "King": 13, "Ace": 14}
     SUITORDER = ["Spades", "Hearts", "Diamonds", "Clubs"]
