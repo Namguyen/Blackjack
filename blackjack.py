@@ -1,9 +1,4 @@
 
-#Assignment: Phase 3 project
-#Class: PROG 128
-#Date: (March 16 , 2023)
-#Author: Nam Nguyen
-#Description: Phase 3 part of the project. 
 
 from objects import Card, Deck, Hand
 
